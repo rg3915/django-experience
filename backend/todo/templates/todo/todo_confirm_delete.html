@@ -1,0 +1,18 @@
+<!-- todo_confirm_delete.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Deletar</h1>
+  <div class="cols-6">
+    <form action="." method="POST">
+      <div class="col-sm-6">
+        {% csrf_token %}
+        <p>Deseja deletar {{ object }} ?</p>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Sim</button>
+          <a class="btn btn-danger" href="{% url 'todo:todo_list' %}">Não</a>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock content %}
