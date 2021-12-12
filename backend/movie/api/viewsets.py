@@ -1,0 +1,34 @@
+from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+from backend.movie.api.serializers import CategorySerializer, MovieSerializer
+from backend.movie.models import Category, Movie
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class MovieViewSet(viewsets.ModelViewSet):
+    # queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
+    def get_queryset(self):
+        return Movie.objects.all()
+
+    @action(detail=False, methods=['get'])
+    def get_good_movies(self, request, pk=None):
+        '''
+        Retorna somente filmes bons, com rating maior ou igual a 4.
+        '''
+        movies = Movie.objects.filter(rating__gte=4)
+
+        page = self.paginate_queryset(movies)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(movies, many=True)
+        return Response(serializer.data)

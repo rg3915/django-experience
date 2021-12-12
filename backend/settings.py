@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'backend.core',
     'backend.todo',
     'backend.video',
+    'backend.movie',
 ]
 
 MIDDLEWARE = [
