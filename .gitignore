@@ -135,3 +135,5 @@ staticfiles/
 .idea
 .ipynb_checkpoints/
 .vscode
+*.cast
+
