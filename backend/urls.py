@@ -19,9 +19,10 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('', include('backend.core.urls', namespace='core')),
+    path('', include('backend.movie.urls', namespace='movie')),
+    path('', include('backend.school.urls', namespace='school')),
     path('', include('backend.todo.urls', namespace='todo')),
     path('', include('backend.video.urls', namespace='video')),
-    path('', include('backend.movie.urls', namespace='movie')),
     path('admin/', admin.site.urls),
 ]
 

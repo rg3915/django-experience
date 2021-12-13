@@ -47,9 +47,10 @@ INSTALLED_APPS = [
     'django_seed',
     # my apps
     'backend.core',
+    'backend.movie',
+    'backend.school',
     'backend.todo',
     'backend.video',
-    'backend.movie',
 ]
 
 MIDDLEWARE = [
