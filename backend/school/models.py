@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -24,3 +25,29 @@ class Classroom(models.Model):
     class Meta:
         verbose_name = "Sala de aula"
         verbose_name_plural = "Salas de aula"
+
+
+class Class(models.Model):
+    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.classroom} {self.teacher}"
+
+    class Meta:
+        verbose_name = "Aula"
+        verbose_name_plural = "Aulas"
+
+
+class Grade(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True)
+    note = models.DecimalField(max_digits=5, decimal_places=2, null=True, default=0.0)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.student} {self.note}"
+
+    class Meta:
+        verbose_name = "Nota"
+        verbose_name_plural = "Notas"
