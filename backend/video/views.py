@@ -16,7 +16,7 @@ def videos(request):
     videos = Video.objects.all()
     data = [video.to_dict() for video in videos]
     form = VideoForm(request.POST or None)
-    
+
     if request.method == 'POST':
         if request.POST:
             # Dados obtidos pelo formulário.
@@ -34,6 +34,7 @@ def videos(request):
         return JsonResponse({'data': video.to_dict()})
 
     return JsonResponse({'data': data})
+
 
 @csrf_exempt
 def video(request, pk):
@@ -69,4 +70,3 @@ def video(request, pk):
     if request.method == 'DELETE':
         video.delete()
         return JsonResponse({'data': 'Item deletado com sucesso.'})
-

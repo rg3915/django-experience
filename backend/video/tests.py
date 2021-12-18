@@ -95,4 +95,3 @@ class VideoTest(TestCase):
         esperado = {"data": "Item deletado com sucesso."}
 
         self.assertEqual(esperado, resultado)
-

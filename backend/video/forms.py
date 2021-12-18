@@ -8,4 +8,3 @@ class VideoForm(forms.ModelForm):
     class Meta:
         model = Video
         fields = ('title', 'release_year')
-
