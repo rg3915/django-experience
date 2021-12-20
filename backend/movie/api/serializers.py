@@ -123,3 +123,13 @@ class MovieSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+
+class MovieReadOnlySerializer(serializers.ModelSerializer):
+    # category = CategorySerializer(required=False)
+
+    class Meta:
+        model = Movie
+        fields = ('id', 'title', 'sinopse', 'rating', 'like', 'created')
+        read_only_fields = fields
+

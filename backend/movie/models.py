@@ -32,3 +32,27 @@ class Movie(models.Model):
 
     class Meta:
         verbose_name_plural = "Movies"
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'sinopse': self.sinopse,
+            'rating': self.rating,
+            'like': self.like,
+            'created': self.created,
+            # 'category': self.category.id,
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,7 +2,11 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from backend.movie.api.serializers import CategorySerializer, MovieSerializer
+from backend.movie.api.serializers import (
+    CategorySerializer,
+    MovieReadOnlySerializer,
+    MovieSerializer
+)
 from backend.movie.models import Category, Movie
 
 
@@ -32,3 +36,27 @@ class MovieViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(movies, many=True)
         return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
+    def movies_readonly(self, request, pk=None):
+        movies = Movie.objects.all()
+
+        page = self.paginate_queryset(movies)
+        if page is not None:
+            serializer = MovieReadOnlySerializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = MovieReadOnlySerializer(movies, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
+    def movies_regular_readonly(self, request, pk=None):
+        movies = Movie.objects.all()
+
+        page = self.paginate_queryset(movies)
+        if page is not None:
+            serializer = [movie.to_dict() for movie in page]
+            return self.get_paginated_response(serializer)
+
+        serializer = [movie.to_dict() for movie in movies]
+        return Response(serializer)
