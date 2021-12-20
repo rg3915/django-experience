@@ -1,4 +1,4 @@
-# Django Experience #03 - Como criar um projeto Django completo + API REST + Render Template
+# Django Experience #01 - Como criar um projeto Django completo + API REST + Render Template
 
 ## contrib e gitignore
 

@@ -43,16 +43,3 @@ class Movie(models.Model):
             'created': self.created,
             # 'category': self.category.id,
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
