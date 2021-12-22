@@ -7,3 +7,4 @@ django-extensions==3.1.*
 psycopg2-binary==2.9.*
 drf-yasg==1.20.*
 pytz
+djhtml==1.4.11
