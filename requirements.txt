@@ -1,4 +1,4 @@
-Django==4.0
+Django==4.0.*
 dr-scaffold==2.1.*
 djangorestframework==3.12.*
 django-seed==0.3.*
