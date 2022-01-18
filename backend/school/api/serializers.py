@@ -53,6 +53,7 @@ class ClassSerializer(serializers.ModelSerializer):
         model = Class
         fields = '__all__'
 
+
 class ClassAddSerializer(serializers.ModelSerializer):
 
     class Meta:

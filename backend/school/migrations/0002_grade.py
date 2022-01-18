@@ -14,10 +14,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Grade',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('note', models.DecimalField(decimal_places=2, default=0.0, max_digits=5, null=True)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('note', models.DecimalField(decimal_places=2,
+                 default=0.0, max_digits=5, null=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
-                ('student', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='school.student')),
+                ('student', models.ForeignKey(
+                    null=True, on_delete=django.db.models.deletion.CASCADE, to='school.student')),
             ],
             options={
                 'verbose_name': 'Nota',

@@ -23,6 +23,7 @@ from backend.movie.models import Category, Movie
 #         instance.save()
 #         return instance
 
+
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:

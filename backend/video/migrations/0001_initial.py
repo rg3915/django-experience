@@ -14,9 +14,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Video',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=50, unique=True, verbose_name='título')),
-                ('release_year', models.PositiveIntegerField(blank=True, null=True, verbose_name='lançamento')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('title', models.CharField(max_length=50,
+                 unique=True, verbose_name='título')),
+                ('release_year', models.PositiveIntegerField(
+                    blank=True, null=True, verbose_name='lançamento')),
             ],
             options={
                 'verbose_name': 'filme',
