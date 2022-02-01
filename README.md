@@ -32,3 +32,10 @@ python manage.py createsuperuser --username="admin" --email=""
 ## Passo a passo
 
 Veja a pasta de [passo-a-passo](https://github.com/rg3915/django-experience/tree/main/passo-a-passo).
+
+
+## Features da aplicação
+
+* Renderização de templates na app `todo`.
+* API REST feita com Django puro na app `video`.
+* Django REST framework nas apps `movie` e `school`.
