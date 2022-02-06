@@ -3,11 +3,14 @@ from django.contrib import admin
 from backend.movie.models import Category, Movie
 
 
-@admin.register(Movie)
-class MovieAdmin(admin.ModelAdmin):
-    exclude = ()
-
-
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ()
+    list_display = ('__str__',)
+    search_fields = ('title',)
+
+
+@admin.register(Movie)
+class MovieAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'rating', 'like')
+    search_fields = ('title', 'sinopse', 'rating', 'like')
+    list_filter = ('like', 'category')

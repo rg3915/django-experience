@@ -5,17 +5,20 @@ from backend.school.models import Class, Classroom, Grade, Student
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    exclude = ()
+    list_display = ('__str__', 'registration')
+    search_fields = ('registration', 'first_name', 'last_name')
 
 
 @admin.register(Classroom)
 class ClassroomAdmin(admin.ModelAdmin):
-    exclude = ()
+    list_display = ('__str__',)
+    search_fields = ('title',)
 
 
 @admin.register(Grade)
 class GradeAdmin(admin.ModelAdmin):
-    exclude = ()
+    list_display = ('student', 'note')
+    search_fields = ('note',)
 
 
 @admin.register(Class)

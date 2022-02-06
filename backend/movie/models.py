@@ -28,7 +28,7 @@ class Movie(models.Model):
     )
 
     def __str__(self):
-        return f"{self.title} {self.sinopse} {self.rating} {self.like}"
+        return f"{self.title}"
 
     class Meta:
         verbose_name_plural = "Movies"
