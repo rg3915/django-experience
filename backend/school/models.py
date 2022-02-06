@@ -28,8 +28,16 @@ class Classroom(models.Model):
 
 
 class Class(models.Model):
-    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(User, on_delete=models.CASCADE)
+    classroom = models.ForeignKey(
+        Classroom,
+        on_delete=models.CASCADE,
+        related_name='classes',
+    )
+    teacher = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='teacher_classes',
+    )
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -41,8 +49,19 @@ class Class(models.Model):
 
 
 class Grade(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True)
-    note = models.DecimalField(max_digits=5, decimal_places=2, null=True, default=0.0)
+    student = models.ForeignKey(
+        Student,
+        on_delete=models.CASCADE,
+        related_name='grades',
+        null=True,
+        blank=True,
+    )
+    note = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        null=True,
+        default=0.0
+    )
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

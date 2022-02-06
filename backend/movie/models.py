@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=30, null=True, blank=True)
+    title = models.CharField(max_length=30, default='', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -13,8 +13,8 @@ class Category(models.Model):
 
 
 class Movie(models.Model):
-    title = models.CharField(max_length=30, null=True, blank=True)
-    sinopse = models.CharField(max_length=255, null=True, blank=True)
+    title = models.CharField(max_length=30, default='', blank=True)
+    sinopse = models.CharField(max_length=255, default='', blank=True)
     rating = models.PositiveIntegerField()
     like = models.BooleanField()
     created = models.DateTimeField(auto_now_add=True)
