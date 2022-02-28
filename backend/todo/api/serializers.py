@@ -8,3 +8,4 @@ class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = '__all__'
+        depth = 1
