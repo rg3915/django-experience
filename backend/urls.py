@@ -18,6 +18,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('backend.core.urls', namespace='core')),
     path('', include('backend.example.urls', namespace='example')),
     path('', include('backend.movie.urls', namespace='movie')),

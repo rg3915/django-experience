@@ -5,7 +5,7 @@ Tutorial Django Experience 2022
 ## Este projeto foi feito com:
 
 * [Python 3.9.8](https://www.python.org/)
-* [Django 4.0](https://www.djangoproject.com/)
+* [Django 4.0.2](https://www.djangoproject.com/)
 * [Django Rest Framework 3.12.4](https://www.django-rest-framework.org/)
 * [Bootstrap 4.0](https://getbootstrap.com/)
 * [htmx 1.6.1](https://htmx.org/)
@@ -38,4 +38,4 @@ Veja a pasta de [passo-a-passo](https://github.com/rg3915/django-experience/tree
 
 * Renderização de templates na app `todo`.
 * API REST feita com Django puro na app `video`.
-* Django REST framework nas apps `movie` e `school`.
+* Django REST framework nas apps `example`, `movie` e `school`.

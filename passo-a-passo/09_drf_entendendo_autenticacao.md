@@ -80,7 +80,7 @@ urlpatterns = [
 ]
 ```
 
-Abra o Postman e faça uma requisição em `http://localhost:8000/api/v1/example/`
+Abra o Postman e faça uma requisição em `http://localhost:8000/api/v1/movie-examples/`
 
 ```python
 # movie/api/viewsets.py

@@ -1,6 +1,13 @@
 from rest_framework import viewsets
+from rest_framework.authentication import (
+    BasicAuthentication,
+    SessionAuthentication,
+    TokenAuthentication
+)
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from backend.movie.api.serializers import (
     CategorySerializer,
@@ -13,6 +20,12 @@ from backend.movie.models import Category, Movie
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    authentication_classes = (
+        BasicAuthentication,
+        SessionAuthentication,
+        TokenAuthentication
+    )
+    permission_classes = (IsAuthenticated,)
 
 
 class MovieViewSet(viewsets.ModelViewSet):
@@ -60,3 +73,13 @@ class MovieViewSet(viewsets.ModelViewSet):
 
         serializer = [movie.to_dict() for movie in movies]
         return Response(serializer)
+
+
+class MovieExampleView(APIView):
+
+    def get(self, request, format=None):
+        content = {
+            'user': str(request.user),  # `django.contrib.auth.User` instance.
+            'auth': str(request.auth),  # None
+        }
+        return Response(content)

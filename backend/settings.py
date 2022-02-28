@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 3rd apps
     'drf_yasg',
     'rest_framework',
+    'rest_framework.authtoken',  # <-- rode python manage.py migrate
     'dr_scaffold',
     'django_extensions',
     'django_seed',
@@ -55,8 +56,13 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5000
+    'PAGE_SIZE': 10,
 }
 
 MIDDLEWARE = [
@@ -142,3 +148,5 @@ STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/admin/login/'
