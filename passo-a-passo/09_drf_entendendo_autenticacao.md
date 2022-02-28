@@ -26,7 +26,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
 
-class ExampleView(APIView):
+class MovieExampleView(APIView):
 
     def get(self, request, format=None):
         content = {
@@ -38,9 +38,11 @@ class ExampleView(APIView):
 
 ```python
 # movie/urls.py
+from backend.movie.api.viewsets import MovieExampleView
+
 urlpatterns = [
     path('api/v1/', include(router.urls)),
-    path('api/v1/examples/', ExampleView.as_view()),
+    path('api/v1/movie-examples/', MovieExampleView.as_view()),
 ]
 ```
 
