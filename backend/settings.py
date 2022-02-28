@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_seed',
     # my apps
     'backend.core',
+    'backend.example',
     'backend.movie',
     'backend.school',
     'backend.todo',
