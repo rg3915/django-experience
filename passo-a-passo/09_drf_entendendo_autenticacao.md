@@ -2,7 +2,41 @@
 
 Doc: https://www.django-rest-framework.org/api-guide/authentication/
 
-## BasicAuthentication e SessionAuthentication
+## BasicAuthentication
+
+É quando você faz a autenticação informando usuário e senha no cabeçalho da requisição via POST. Por exemplo, via Postman, usando `Basic Auth`.
+
+Recomendável usar somente em testes locais.
+
+
+## SessionAuthentication
+
+É quando você faz o login pela própria interface do Django. Na tela de login do Admin, por exemplo.
+
+O que nós chamamos de sessão é a própria autenticação default do Django.
+
+
+### Configurando o login via Django (Sessão)
+
+Edite `settings.py`
+
+```python
+LOGIN_URL = '/admin/login/'
+```
+
+
+Edite `urls.py`
+
+```python
+urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
+    ...
+]
+```
+
+https://docs.djangoproject.com/en/4.0/topics/auth/default/#module-django.contrib.auth.views
+
+
 
 ```python
 # settings.py
@@ -46,10 +80,6 @@ urlpatterns = [
 ]
 ```
 
-O `SessionAuthentication` é quando você faz login pelo site, pela página da aplicação.
-
-O `BasicAuthentication` é quando você faz login pelo Postman usando `Basic Auth`.
-
 Abra o Postman e faça uma requisição em `http://localhost:8000/api/v1/example/`
 
 ```python
@@ -66,6 +96,9 @@ Abra o Postman e faça uma requisição em `http://localhost:8000/api/v1/categor
 
 
 ## TokenAuthentication
+
+É quando você informa um token de autorização para cada usuário logado.
+
 
 ```python
 # settings.py
