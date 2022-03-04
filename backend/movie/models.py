@@ -17,6 +17,7 @@ class Movie(models.Model):
     sinopse = models.CharField(max_length=255, default='', blank=True)
     rating = models.PositiveIntegerField()
     like = models.BooleanField()
+    censure = models.PositiveIntegerField()
     created = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(
         'Category',
