@@ -1,11 +1,17 @@
-from rest_framework import viewsets
+from rest_framework import status, viewsets
 from rest_framework.authentication import (
     BasicAuthentication,
     SessionAuthentication,
     TokenAuthentication
 )
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.exceptions import ValidationError as DRFValidationError
+from rest_framework.permissions import (
+    BasePermission,
+    DjangoModelPermissions,
+    IsAuthenticated,
+    IsAuthenticatedOrReadOnly
+)
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -28,9 +34,49 @@ class CategoryViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
 
+class CensurePermission(BasePermission):
+    age_user = 14
+    group_name = 'Infantil'
+    message = 'Este filme não é permitido para este perfil.'
+
+    def has_permission(self, request, view):
+        # Retorna uma lista de todos os grupos do usuário logado.
+        groups = request.user.groups.values_list('name', flat=True)
+
+        # Pega a instância do objeto.
+        obj = view.get_object()
+
+        censure = obj.censure
+
+        if self.group_name in groups and censure >= self.age_user:
+            response = {
+                'message': self.message,
+                'status_code': status.HTTP_403_FORBIDDEN
+            }
+            raise DRFValidationError(response)
+        else:
+            return True
+
+
+class NotDeletePermission(BasePermission):
+    message = 'Nenhum registro pode ser deletado.'
+
+    def has_permission(self, request, view):
+        if request.method == 'DELETE':
+            response = {
+                'message': self.message,
+                'status_code': status.HTTP_403_FORBIDDEN
+            }
+            raise DRFValidationError(response)
+        else:
+            return True
+
+
 class MovieViewSet(viewsets.ModelViewSet):
     # queryset = Movie.objects.all()
     serializer_class = MovieSerializer
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (DjangoModelPermissions, CensurePermission, NotDeletePermission)
 
     def get_queryset(self):
         return Movie.objects.all()

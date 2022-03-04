@@ -83,7 +83,16 @@ class MovieSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Movie
-        fields = ('id', 'title', 'sinopse', 'rating', 'like', 'created', 'category')
+        fields = (
+            'id',
+            'title',
+            'sinopse',
+            'rating',
+            'censure',
+            'like',
+            'created',
+            'category'
+        )
         # depth = 1
 
     def create(self, validated_data):
