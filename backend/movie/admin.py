@@ -11,6 +11,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'rating', 'censure', 'like')
+    list_display = ('__str__', 'censure', 'rating', 'like')
     search_fields = ('title', 'sinopse', 'rating', 'like')
     list_filter = ('like', 'category')

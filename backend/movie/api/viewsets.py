@@ -26,12 +26,12 @@ from backend.movie.models import Category, Movie
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    authentication_classes = (
-        BasicAuthentication,
-        SessionAuthentication,
-        TokenAuthentication
-    )
-    permission_classes = (IsAuthenticated,)
+    # authentication_classes = (
+    #     BasicAuthentication,
+    #     SessionAuthentication,
+    #     TokenAuthentication
+    # )
+    # permission_classes = (IsAuthenticated,)
 
 
 class CensurePermission(BasePermission):
