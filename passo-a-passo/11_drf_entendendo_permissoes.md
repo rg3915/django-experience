@@ -151,12 +151,9 @@ class CensurePermission(BasePermission):
     group_name = 'Infantil'
     message = 'Este filme não é permitido para este perfil.'
 
-    def has_permission(self, request, view):
+    def has_object_permission(self, request, view, obj):
         # Retorna uma lista de todos os grupos do usuário logado.
         groups = request.user.groups.values_list('name', flat=True)
-
-        # Pega a instância do objeto.
-        obj = view.get_object()
 
         censure = obj.censure
 

@@ -39,12 +39,30 @@ class CensurePermission(BasePermission):
     group_name = 'Infantil'
     message = 'Este filme não é permitido para este perfil.'
 
-    def has_permission(self, request, view):
+    # def has_permission(self, request, view):
+    #     # Retorna uma lista de todos os grupos do usuário logado.
+    #     groups = request.user.groups.values_list('name', flat=True)
+
+    #     try:
+    #         # Pega a instância do objeto.
+    #         obj = view.get_object()
+    #     except AssertionError:
+    #         return True
+
+    #     censure = obj.censure
+
+    #     if self.group_name in groups and censure >= self.age_user:
+    #         response = {
+    #             'message': self.message,
+    #             'status_code': status.HTTP_403_FORBIDDEN
+    #         }
+    #         raise DRFValidationError(response)
+    #     else:
+    #         return True
+
+    def has_object_permission(self, request, view, obj):
         # Retorna uma lista de todos os grupos do usuário logado.
         groups = request.user.groups.values_list('name', flat=True)
-
-        # Pega a instância do objeto.
-        obj = view.get_object()
 
         censure = obj.censure
 
