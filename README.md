@@ -38,4 +38,8 @@ Veja a pasta de [passo-a-passo](https://github.com/rg3915/django-experience/tree
 
 * Renderização de templates na app `todo`.
 * API REST feita com Django puro na app `video`.
-* Django REST framework nas apps `example`, `movie` e `school`.
+* Django REST framework nas apps `example`, `hotel`, `movie` e `school`.
+* [Salvando dados extra](https://github.com/rg3915/django-experience/blob/main/passo-a-passo/08_drf_salvando_dados_extra.md) com [perform_create](https://www.django-rest-framework.org/tutorial/4-authentication-and-permissions/#associating-snippets-with-users)
+* [Reescrevendo o Admin do User](https://github.com/rg3915/django-experience/blob/main/passo-a-passo/10_reescrevendo_admin_user.md)
+* [Editando mensagens de erro no DRF](https://github.com/rg3915/django-experience/blob/main/passo-a-passo/12_drf_editando_mensagens_erro.md)
+* **Dica:** [Adicionando Grupos e Permissões](https://github.com/rg3915/django-experience/blob/main/passo-a-passo/14_grupos_permissoes.md)
