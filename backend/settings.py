@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # my apps
     'backend.core',
     'backend.example',
+    'backend.hotel',
     'backend.movie',
     'backend.school',
     'backend.todo',

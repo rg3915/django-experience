@@ -78,8 +78,15 @@ class CategorySerializer(serializers.ModelSerializer):
 
 #         return instance
 
+
+def positive_only_validator(value):
+    if value == 0:
+        raise serializers.ValidationError('Zero não é um valor permitido.')
+
+
 class MovieSerializer(serializers.ModelSerializer):
     category = CategorySerializer(required=False)
+    censure = serializers.IntegerField(min_value=0, validators=[positive_only_validator])
 
     class Meta:
         model = Movie
@@ -94,6 +101,16 @@ class MovieSerializer(serializers.ModelSerializer):
             'category'
         )
         # depth = 1
+
+    # def validate_title(self, value):
+    #     if 'lorem' in value.lower():
+    #         raise serializers.ValidationError('Lorem não pode.')
+    #     return value
+
+    def validate(self, data):
+        if 'lorem' in data['title'].lower():
+            raise serializers.ValidationError('Lorem não pode.')
+        return data
 
     def create(self, validated_data):
         """

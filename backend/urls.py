@@ -21,6 +21,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('backend.core.urls', namespace='core')),
     path('', include('backend.example.urls', namespace='example')),
+    path('', include('backend.hotel.urls', namespace='hotel')),
     path('', include('backend.movie.urls', namespace='movie')),
     path('', include('backend.school.urls', namespace='school')),
     path('', include('backend.todo.urls', namespace='todo')),
