@@ -20,6 +20,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('backend.core.urls', namespace='core')),
+    path('', include('backend.crm.urls', namespace='crm')),
     path('', include('backend.example.urls', namespace='example')),
     path('', include('backend.hotel.urls', namespace='hotel')),
     path('', include('backend.movie.urls', namespace='movie')),
@@ -27,6 +28,12 @@ urlpatterns = [
     path('', include('backend.todo.urls', namespace='todo')),
     path('', include('backend.video.urls', namespace='video')),
     path('admin/', admin.site.urls),
+]
+
+# djoser
+urlpatterns += [
+    path('api/v1/', include('djoser.urls')),
+    path('api/v1/auth/', include('djoser.urls.authtoken')),
 ]
 
 # swagger

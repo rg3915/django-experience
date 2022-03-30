@@ -43,11 +43,13 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',  # <-- rode python manage.py migrate
+    'djoser',
     'dr_scaffold',
     'django_extensions',
     'django_seed',
     # my apps
     'backend.core',
+    'backend.crm',
     'backend.example',
     'backend.hotel',
     'backend.movie',
@@ -66,6 +68,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'EXCEPTION_HANDLER': 'backend.core.handler.custom_exception_handler',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
