@@ -1,7 +1,7 @@
 from rest_framework import status, viewsets
 from rest_framework.exceptions import ValidationError as DRFValidationError
-from rest_framework.permissions import BasePermission
 from rest_framework.filters import SearchFilter
+from rest_framework.permissions import BasePermission
 
 from backend.crm.api.serializers import (
     ComissionSerializer,
