@@ -10,3 +10,4 @@ pytz
 djhtml==1.4.11
 autopep8==1.6.0
 djoser==2.1.0
+django-filter==21.1
