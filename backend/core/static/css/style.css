@@ -14,3 +14,7 @@ label.required:after {
 .no {
   color: red;
 }
+
+.errorlist {
+  color:  red;
+}

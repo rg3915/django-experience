@@ -10,8 +10,8 @@ STATUS = (
 
 
 class Todo(models.Model):
-    task = models.CharField(max_length=50)
-    description = models.TextField(null=True, blank=True)
+    task = models.CharField('tarefa', max_length=50)
+    description = models.TextField('descrição', null=True, blank=True)
     is_done = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
