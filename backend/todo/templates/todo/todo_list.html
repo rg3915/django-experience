@@ -10,6 +10,7 @@
     <thead>
       <tr>
         <th>Tarefa</th>
+        <th>Descrição</th>
         <th>Feito?</th>
         <th>Ações</th>
       </tr>
@@ -20,6 +21,7 @@
           <td>
             <a href="{{ object.get_absolute_url }}">{{ object.task }}</a>
           </td>
+          <td>{{ object.description }}</td>
           <td>
             {% if object.is_done %}
               <i class="fa fa-check-circle ok"></i>

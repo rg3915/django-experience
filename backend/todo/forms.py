@@ -12,6 +12,9 @@ class TodoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(TodoForm, self).__init__(*args, **kwargs)
+
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+
+        # Remove a class de is_done.
         self.fields['is_done'].widget.attrs['class'] = None
