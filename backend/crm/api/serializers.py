@@ -23,6 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
             # 'groups',
             # 'user_permissions',
         )
+        ref_name = 'Custom User Serializer'
 
 
 class CustomerSerializer(serializers.ModelSerializer):
