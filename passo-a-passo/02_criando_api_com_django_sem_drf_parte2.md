@@ -203,12 +203,14 @@ urlpatterns = [
 
 Edite `nav.html`
 
-```python
+```html
 <!-- nav.html -->
 <li class="nav-item">
-  <a class="nav-link" href="{% url 'video:videos' %}">API V1 Video</a>
+  <a class="nav-link" href="{\% url 'video:videos' %}">API V1 Video</a>
 </li>
 ```
+
+**Obs:** *O correto é `href="{\%` (chave porcentagem), mas coloquei a barra invertida por causa do Jekyll.*
 
 Edite `video/tests.py`
 
