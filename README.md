@@ -4,8 +4,8 @@ Tutorial Django Experience 2022
 
 ## Este projeto foi feito com:
 
-* [Python 3.9.8](https://www.python.org/)
-* [Django 4.0.2](https://www.djangoproject.com/)
+* [Python 3.10.4](https://www.python.org/)
+* [Django 4.0.4](https://www.djangoproject.com/)
 * [Django Rest Framework 3.12.4](https://www.django-rest-framework.org/)
 * [Bootstrap 4.0](https://getbootstrap.com/)
 * [htmx 1.6.1](https://htmx.org/)
@@ -30,6 +30,8 @@ python manage.py createsuperuser --username="admin" --email=""
 ```
 
 ## Passo a passo
+
+Leia [https://rg3915.github.io/django-experience/](https://rg3915.github.io/django-experience/) ou
 
 Veja a pasta de [passo-a-passo](https://github.com/rg3915/django-experience/tree/main/passo-a-passo).
 
