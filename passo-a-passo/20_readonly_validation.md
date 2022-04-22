@@ -4,7 +4,7 @@
     <img src="../img/youtube.png">
 </a>
 
-Doc: https://docs.djangoproject.com/en/4.0/ref/forms/validation/#cleaning-a-specific-field-attribute
+Doc: [https://docs.djangoproject.com/en/4.0/ref/forms/validation/#cleaning-a-specific-field-attribute](https://docs.djangoproject.com/en/4.0/ref/forms/validation/#cleaning-a-specific-field-attribute)
 
 Considere a app `todo` e o campo `description`:
 
