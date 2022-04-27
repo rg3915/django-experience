@@ -51,4 +51,5 @@ python manage.py createsuperuser --username="admin" --email=""
 * [#15 - DRF: Entendendo Validações](passo-a-passo/15_drf_entendendo_validacoes.md)
 * [Entendendo o Django REST framework](passo-a-passo/16_entendendo_drf.md)
 * [#17 - Novo comando](passo-a-passo/17_novo_comando.md)
-* [#20 - Dica: O problema do readonly e validação no Django](passo-a-passo/20_readonly_validation.md)
+* [#18 - Como rodar o projeto Django Experience no Windows 10 com PowerShell](https://youtu.be/clDiMuITKCs)
+* [#19 - Dica: O problema do readonly e validação no Django](passo-a-passo/19_readonly_validation.md)
