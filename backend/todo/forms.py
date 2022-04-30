@@ -28,7 +28,7 @@ class TodoForm(forms.ModelForm):
     #     self.description = self.cleaned_data.get('description')
     #     self.label = self.fields['description'].label
 
-    #     if self.description or self.description != self.instance.description:
+    #     if self.description or (self.instance.pk and self.description != self.instance.description):
     #         raise ValidationError(f'O campo {self.label} não pode ser editado.')
 
     #     return self.cleaned_data
@@ -37,7 +37,7 @@ class TodoForm(forms.ModelForm):
         self.description = self.cleaned_data.get('description')
         self.label = self.fields['description'].label
 
-        if self.description or self.description != self.instance.description:
+        if self.description or (self.instance.pk and self.description != self.instance.description):
             raise ValidationError(f'O campo {self.label} não pode ser editado.')
 
         return self.cleaned_data['description']
