@@ -33,6 +33,7 @@ def customer(user, seller):
         "seller": seller.pk,
         "rg": "207629010",
         "cpf": "35703019079",
-        "cep": "40613000"
+        "cep": "04013000",
+        "address": "Rua Cubatão, 220 - São Paulo - SP"
     }
     return data
