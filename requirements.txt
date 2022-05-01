@@ -10,5 +10,6 @@ dr-scaffold==2.1.*
 drf-yasg==1.20.*
 ipdb
 psycopg2-binary==2.9.*
+pytest-django==4.5.2
 python-decouple==3.5
 pytz
