@@ -1,6 +1,6 @@
 # Django Experience #19 - Dica: O problema do readonly e validação no Django
 
-<a href="">
+<a href="https://youtu.be/o05358l3rcE">
     <img src="../img/youtube.png">
 </a>
 
