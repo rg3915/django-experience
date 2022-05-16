@@ -152,20 +152,148 @@ def test_list_customers_status_code(client, seller):
 
 Vamos relembrar as regras de negócio da app `crm`.
 
-* Crie um cadastro de **clientes**.
-* Os campos são: usuário (nome, sobrenome, e-mail), vendedor (nome, sobrenome, e-mail), RG, CPF, CEP, endereço, ativo (booleano).
-* Cada **cliente** pode ter um **vendedor** associado a ele, mas não é obrigatório.
-* Ao **criar** um novo cliente, deve preencher os campos: usuário, RG, CPF, CEP, endereço.
-* Ao **editar** um cliente, pode editar os campos: usuário (nome, sobrenome, e-mail), vendedor (nome, sobrenome, e-mail), RG, CPF, CEP, endereço.
-* Retornar RG, CPF e CEP formatado com pontos e traços. Ex: 904.658.880-70
-* Se eu for um Vendedor, eu só posso ver os meus clientes.
-* Se eu for um Vendedor, ao cadastrar o cliente o campo "vendedor" deve ser preenchido com o usuário logado.
-* Se eu for um Vendedor, só posso editar os meus clientes.
+1. Crie um cadastro de **clientes**. Os campos são: usuário (nome, sobrenome, e-mail), vendedor (nome, sobrenome, e-mail), RG, CPF, CEP, endereço, ativo (booleano).
+2. Cada **cliente** pode ter um **vendedor** associado a ele, mas não é obrigatório.
+3. Ao **criar** um novo cliente, deve preencher os campos: usuário, RG, CPF, CEP, endereço.
+4. Ao **editar** um cliente, pode editar os campos: usuário (nome, sobrenome, e-mail), vendedor (nome, sobrenome, e-mail), RG, CPF, CEP, endereço.
+5. Retornar RG, CPF e CEP formatado com pontos e traços. Ex: 904.658.880-70
+6. Se eu for um Vendedor, eu só posso ver os meus clientes.
+7. Se eu for um Vendedor, ao cadastrar o cliente o campo "vendedor" deve ser preenchido com o usuário logado.
+8. Se eu for um Vendedor, só posso editar os meus clientes.
 
-* Crie uma tabela de **comissões**.
-* Os campos são: grupo e porcentagem.
+9. Crie uma tabela de **comissões**.
+10. Os campos são: grupo e porcentagem.
 
-* Criar um sistema de autenticação com login, logout e cadastro.
+11. Criar um sistema de autenticação com login, logout e cadastro.
 
-* Se eu for um Vendedor, não posso ver a tabela de comissões.
-* Fazer uma validação simples de CPF e CEP para aceitar somente números.
+12. Se eu for um Vendedor, não posso ver a tabela de comissões.
+13. Fazer uma validação simples de CPF e CEP para aceitar somente números.
+
+
+
+
+
+### Teste 1
+
+1. Crie um cadastro de **clientes**. Os campos são: usuário (nome, sobrenome, e-mail), vendedor (nome, sobrenome, e-mail), RG, CPF, CEP, endereço, ativo (booleano).
+
+Já resolvido com o teste `test_create_customer`.
+
+
+### Teste 2
+
+2. Cada **cliente** pode ter um **vendedor** associado a ele, mas não é obrigatório.
+
+Já resolvido com o teste `test_create_customer`. Além disso o a *fixture* `seller` em `conftest.py` já exemplifica isso.
+
+
+### Teste 3
+
+3. Ao **criar** um novo cliente, deve preencher os campos: usuário, RG, CPF, CEP, endereço.
+
+```python
+def test_customer_contains_expected_fields():
+    data = CustomerCreateSerializer().data
+    expected = set(['user', 'rg', 'cpf', 'cep', 'address'])
+
+    assert set(data.keys()) == expected
+```
+
+
+### Teste 4
+
+4. Ao **editar** um cliente, pode editar os campos: usuário (nome, sobrenome, e-mail), vendedor (nome, sobrenome, e-mail), RG, CPF, CEP, endereço.
+
+```python
+def test_customer_update_contains_expected_fields():
+    data = CustomerUpdateSerializer().data
+    expected = set(['user', 'seller', 'rg', 'cpf', 'cep', 'address'])
+
+    assert set(data.keys()) == expected
+```
+
+
+### Teste 5
+
+5. Retornar RG, CPF e CEP formatado com pontos e traços. Ex: 904.658.880-70
+
+```python
+@pytest.mark.django_db
+def test_customer_representation(user):
+    '''
+    Retornar RG, CPF e CEP formatado com pontos e traços. Ex: 904.658.880-70
+    '''
+    data = {
+        "user": user,
+        "rg": "207629010",
+        "cpf": "35703019079",
+        "cep": "04013000",
+        "address": "Rua Cubatão, 220 - São Paulo - SP"
+    }
+    customer = Customer.objects.create(**data)
+
+    rg = f"{customer.rg[:2]}.{customer.rg[2:5]}.{customer.rg[5:8]}-{customer.rg[8:]}"
+    cpf = f"{customer.cpf[:3]}.{customer.cpf[3:6]}.{customer.cpf[6:9]}-{customer.cpf[9:]}"
+    cep = f"{customer.cep[:5]}-{customer.cep[5:]}"
+
+    assert rg == '20.762.901-0'
+    assert cpf == '357.030.190-79'
+    assert cep == '04013-000'
+```
+
+
+### Teste 6
+
+6. Se eu for um Vendedor, eu só posso ver os meus clientes.
+
+
+
+
+### Teste 7
+
+7. Se eu for um Vendedor, ao cadastrar o cliente o campo "vendedor" deve ser preenchido com o usuário logado.
+
+
+
+
+### Teste 8
+
+8. Se eu for um Vendedor, só posso editar os meus clientes.
+
+
+
+
+
+### Teste 9
+
+9. Crie uma tabela de **comissões**.
+
+
+
+
+### Teste 10
+
+10. Os campos são: grupo e porcentagem.
+
+
+
+
+
+### Teste 11
+
+11. Criar um sistema de autenticação com login, logout e cadastro.
+
+
+
+
+
+### Teste 12
+
+12. Se eu for um Vendedor, não posso ver a tabela de comissões.
+
+
+
+
+### Teste 13
+
+13. Fazer uma validação simples de CPF e CEP para aceitar somente números.
