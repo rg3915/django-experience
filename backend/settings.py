@@ -49,10 +49,12 @@ INSTALLED_APPS = [
     'django_seed',
     # my apps
     'backend.core',
+    'backend.bookstore',
     'backend.crm',
     'backend.example',
     'backend.hotel',
     'backend.movie',
+    'backend.persona',
     'backend.school',
     'backend.todo',
     'backend.video',
