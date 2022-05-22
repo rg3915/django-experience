@@ -122,37 +122,37 @@ urlpatterns = [
 
 ## OneToMany - Um pra Muitos - Foreign Key - Chave Estrangeira
 
-![01_fk.png](img/modelagem/01_fk.png)
+![01_fk.png](../img/modelagem/01_fk.png)
 
 
 ## OneToOne - Um pra Um
 
-![02_one2one.png](img/modelagem/02_one2one.png)
-![03_fk_one2one.png](img/modelagem/03_fk_one2one.png)
-![04_one2one_user_profile.png](img/modelagem/04_one2one_user_profile.png)
-![05_all.png](img/modelagem/05_all.png)
+![02_one2one.png](../img/modelagem/02_one2one.png)
+![03_fk_one2one.png](../img/modelagem/03_fk_one2one.png)
+![04_one2one_user_profile.png](../img/modelagem/04_one2one_user_profile.png)
+![05_all.png](../img/modelagem/05_all.png)
 
 
 ## ManyToMany - Muitos pra Muitos
 
-![06_m2m_author_book.png](img/modelagem/06_m2m_author_book.png)
-![07_m2m_author_book_store.png](img/modelagem/07_m2m_author_book_store.png)
-![08_m2m_fk.png](img/modelagem/08_m2m_fk.png)
-![09_m2m_user_group.png](img/modelagem/09_m2m_user_group.png)
+![06_m2m_author_book.png](../img/modelagem/06_m2m_author_book.png)
+![07_m2m_author_book_store.png](../img/modelagem/07_m2m_author_book_store.png)
+![08_m2m_fk.png](../img/modelagem/08_m2m_fk.png)
+![09_m2m_user_group.png](../img/modelagem/09_m2m_user_group.png)
 
 
 ## Abstract Inheritance - Herança Abstrata
 
-![10_abstract.png](img/modelagem/10_abstract.png)
-![11_timestampedmodel.png](img/modelagem/11_timestampedmodel.png)
+![10_abstract.png](../img/modelagem/10_abstract.png)
+![11_timestampedmodel.png](../img/modelagem/11_timestampedmodel.png)
 
 
 ## Multi-table Inheritance - Herança Multi-tabela
 
-![12_mti.png](img/modelagem/12_mti.png)
+![12_mti.png](../img/modelagem/12_mti.png)
 
 
 ## Proxy Model
 
-![13_proxy_model.png](img/modelagem/13_proxy_model.png)
+![13_proxy_model.png](../img/modelagem/13_proxy_model.png)
 
