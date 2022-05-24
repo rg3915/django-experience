@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'backend.bookstore',
     'backend.crm',
     'backend.example',
+    'backend.expense',
     'backend.hotel',
     'backend.movie',
     'backend.persona',

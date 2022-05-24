@@ -1,11 +1,11 @@
 from django.urls import include, path
 from rest_framework import routers
 
-app_name = 'persona'
+app_name = 'expense'
 
 router = routers.DefaultRouter()
 
-# router.register(r'customers', CustomerViewSet, basename='customer')
+# router.register(r'expenses', ExpenseViewSet, basename='expense')
 # Lição de casa: completar a parte do viewsets e serializers.
 
 urlpatterns = [

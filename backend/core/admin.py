@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
+from backend.core.models import Profile
+
 
 class CustomUserAdmin(UserAdmin):
     list_display = (
@@ -23,3 +25,16 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'birthday', 'linkedin', 'rg', 'cpf')
+    search_fields = (
+        'customer__first_name',
+        'customer__last_name',
+        'customer__email',
+        'linkedin',
+        'rg',
+        'cpf'
+    )
