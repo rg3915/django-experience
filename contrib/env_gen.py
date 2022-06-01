@@ -17,10 +17,10 @@ SECRET_KEY=%s
 ALLOWED_HOSTS=127.0.0.1,.localhost,0.0.0.0
 
 #DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
-#POSTGRES_DB=
-#POSTGRES_USER=
-#POSTGRES_PASSWORD=%s
-#DB_HOST=localhost
+POSTGRES_DB=db
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+DB_HOST=localhost
 
 #DEFAULT_FROM_EMAIL=
 #EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
@@ -29,7 +29,7 @@ ALLOWED_HOSTS=127.0.0.1,.localhost,0.0.0.0
 #EMAIL_HOST_USER=
 #EMAIL_HOST_PASSWORD=
 #EMAIL_USE_TLS=True
-""".strip() % (secret_key, password)
+""".strip() % secret_key
 
 # Writing our configuration file to '.env'
 with open('.env', 'w') as configfile:
