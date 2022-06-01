@@ -1,6 +1,6 @@
 # Django Experience #21 - Chain List Queryset - Encadeando consultas
 
-<a href="">
+<a href="https://youtu.be/as8IC4CMVX0">
     <img src="../img/youtube.png">
 </a>
 
