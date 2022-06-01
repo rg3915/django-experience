@@ -26,7 +26,7 @@ docker run -d \
 portainer/portainer
 ```
 
-![../img/portainer.png](img/portainer.png)
+![img/portainer.png](../img/portainer.png)
 
 ### Escrevendo o `docker-compose.yml`
 
@@ -157,9 +157,9 @@ python manage.py runserver
 
 Entre no pgAdmin.
 
-![../img/db01.png](img/db01.png)
+![img/db01.png](../img/db01.png)
 
-![../img/db02.png](img/db02.png)
+![img/db02.png](../img/db02.png)
 
-![../img/pgadmin.png](img/pgadmin.png)
+![img/pgadmin.png](../img/pgadmin.png)
 
