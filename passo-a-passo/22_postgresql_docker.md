@@ -6,6 +6,9 @@
 
 Agora nós vamos usar o PostgreSQL rodando dentro do Docker.
 
+![img/docker-compose.png](../img/docker-compose.png)
+
+
 Instale o [docker](https://docs.docker.com/get-docker/) e o [docker-compose](https://docs.docker.com/compose/install/) na sua máquina.
 
 ```
