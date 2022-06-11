@@ -6,6 +6,6 @@ app_name = 'order'
 
 
 urlpatterns = [
-    path('', v.order_list, name='order_list'),
-    path('create/', v.order_create, name='order_create'),
+    path('order/', v.order_list, name='order_list'),
+    path('order/create/', v.order_create, name='order_create'),
 ]
