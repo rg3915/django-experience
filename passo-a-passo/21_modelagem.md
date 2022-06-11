@@ -13,7 +13,7 @@
 
 Vamos falar sobre:
 
-* OneToMany - Um pra Muitos - Foreign Key - Chave Estrangeira
+* OneToMany - Um pra Muitos - ForeignKey - Chave Estrangeira
 * OneToOne - Um pra Um
 * ManyToMany - Muitos pra Muitos
 * Abstract Inheritance - Herança Abstrata
@@ -136,9 +136,14 @@ urlpatterns = [
 ```
 
 
-## OneToMany - Um pra Muitos - Foreign Key - Chave Estrangeira
+## OneToMany - Um pra Muitos - ForeignKey - Chave Estrangeira
+
+É o relacionamento onde usamos **chave estrangeira**, conhecido como **ForeignKey**.
 
 ![01_fk.png](../img/modelagem/01_fk.png)
+
+Um **cliente** pode fazer vários **pedidos**, então para reproduzir o esquema acima, usamos o seguinte código:
+
 
 ```python
 # bookstore/models.py
@@ -229,6 +234,148 @@ class OrderedAdmin(admin.ModelAdmin):
 python manage.py makemigrations
 python manage.py migrate
 ```
+
+### Diagrama ER
+
+![](../img/modelagem/01_fk_er.png)
+
+
+### Inserindo dados com django-seed
+
+```
+pip install django-seed
+```
+
+Edite `settings.py`
+
+```python
+# settings.py
+INSTALLED_APPS = [
+    ...
+    'django_seed',
+    ...
+]
+```
+
+Gerando os dados
+
+```
+python manage.py seed bookstore --number=3
+```
+
+### ORM
+
+```python
+python manage.py shell_plus
+
+
+from backend.bookstore.models import Customer, Ordered
+
+customers = Customer.objects.all()
+
+for customer in customers:
+    print(customer)
+
+ordereds = Ordered.objects.all()
+
+for ordered in ordereds:
+    print(ordered)
+```
+
+### PostgreSQL e pgAdmin no Docker
+
+Vamos usar o PostgreSQL rodando no Docker.
+
+```
+docker-compose up -d
+```
+
+Podemos ver tudo pelo pgAdmin, ou
+
+```
+docker container exec -it db psql
+```
+
+#### As tabelas
+
+```
+\c db  # conecta no banco db
+\dt    # mostra todas as tabelas
+```
+
+#### Os registros
+
+```
+SELECT * FROM bookstore_ordered;
+
+id | status |        created         | customer_id 
+----+--------+------------------------+-------------
+  1 | p      | 1976-01-05 07:04:10+00 |           1
+  2 | p      | 2021-02-09 06:08:27+00 |           3
+  3 | p      | 1986-08-13 02:54:02+00 |           1
+```
+
+#### Schema
+
+```
+SELECT column_name, data_type FROM information_schema.columns WHERE TABLE_NAME = 'bookstore_ordered';
+ column_name |        data_type         
+-------------+--------------------------
+ id          | bigint
+ created     | timestamp with time zone
+ customer_id | bigint
+ status      | character varying
+(4 rows)
+```
+
+## DBeaver e CloudBeaver
+
+### CloudBeaver
+
+https://github.com/dbeaver/cloudbeaver/wiki/Run-Docker-Container
+
+https://cloudbeaver.io/doc/cloudbeaver.pdf
+
+Edite o `docker-compose.yml`
+
+```
+  cloudbeaver:
+    container_name: cloudbeaver
+    image: dbeaver/cloudbeaver:latest
+    volumes:
+       - /var/cloudbeaver/workspace:/opt/cloudbeaver/workspace
+    ports:
+      - 5051:8978
+    networks:
+      - postgres
+
+```
+
+E rode
+
+```
+docker-compose up -d
+```
+
+Login e senha
+
+```
+Login: cbadmin
+Pass: admin
+```
+
+### DBeaver
+
+```
+Host: localhost
+Port: 5433
+Database: db
+Username: postgres
+Password: postgres
+```
+
+AQUI
+
 
 ## OneToOne - Um pra Um
 
@@ -363,6 +510,37 @@ class ProfileAdmin(admin.ModelAdmin):
 python manage.py makemigrations
 python manage.py migrate
 ```
+
+### Diagrama ER
+
+
+
+**Obs:** Caso dê o **erro**
+
+```
+RelatedObjectDoesNotExist at /admin/login/
+
+User has no profile.
+```
+
+Entre no shell e digite
+
+```python
+python manage.py shell_plus
+
+from django.contrib.auth.models import User
+from backend.core.models import Profile
+
+users = User.objects.all()
+
+for user in users:
+    try:
+        user.profile
+    except Profile.DoesNotExist:
+        profile = Profile(user=user)
+        profile.save()
+```
+
 
 
 ## ManyToMany - Muitos pra Muitos
