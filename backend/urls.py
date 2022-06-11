@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('backend.example.urls', namespace='example')),
     path('', include('backend.hotel.urls', namespace='hotel')),
     path('', include('backend.movie.urls', namespace='movie')),
+    path('', include('backend.order.urls', namespace='order')),
     path('', include('backend.school.urls', namespace='school')),
     path('', include('backend.todo.urls', namespace='todo')),
     path('', include('backend.video.urls', namespace='video')),
