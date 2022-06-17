@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-# from .forms import OrderForm
+from .forms import OrderForm
 from .models import Order
 
 
@@ -16,7 +16,7 @@ def order_list(request):
 def order_create(request):
     template_name = 'order/order_form.html'
     # Passa o usuário logado no formulário.
-    # form = OrderForm(request.user, request.POST or None)
+    form = OrderForm(request.user, request.POST or None)
 
     if request.method == 'POST':
         if form.is_valid():

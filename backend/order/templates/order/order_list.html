@@ -2,38 +2,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-  <div class="row">
-    <div class="col-auto">
-      <h1>Lista de Pedidos</h1>
+  <div>
+    <div class="row">
+      <div class="col-auto">
+        <h1>Lista de Pedidos</h1>
+      </div>
+      <div class="col-auto">
+        <a
+          class="btn btn-primary"
+          href="{% url 'order:order_create' %}"
+        >Adicionar</a>
+      </div>
     </div>
-    <div class="col-auto">
-      <a
-        class="btn btn-primary"
-        href="{% url 'order:order_create' %}"
-      >Adicionar</a>
-    </div>
-  </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Pedido</th>
-        <th>Funcionário</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for object in object_list %}
+    <table class="table">
+      <thead>
         <tr>
-          <td>{{ object.id }}</td>
-          <td>{{ object.title }}</td>
-          <td>{{ object.employee }}</td>
+          <th>ID</th>
+          <th>Pedido</th>
+          <th>Funcionário</th>
         </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        {% for object in object_list %}
+          <tr>
+            <td>{{ object.id }}</td>
+            <td>{{ object.title }}</td>
+            <td>{{ object.employee }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
-{% include "includes/pagination.html" %}
+  {% include "includes/pagination.html" %}
 
 {% endblock content %}
