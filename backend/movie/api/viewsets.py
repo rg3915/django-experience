@@ -94,7 +94,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     # queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     # permission_classes = (IsAuthenticatedOrReadOnly,)
-    permission_classes = (DjangoModelPermissions, CensurePermission, NotDeletePermission)
+    # permission_classes = (DjangoModelPermissions, CensurePermission, NotDeletePermission)
 
     def get_queryset(self):
         return Movie.objects.all()
