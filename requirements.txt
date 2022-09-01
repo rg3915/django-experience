@@ -12,3 +12,4 @@ ipdb
 psycopg2-binary==2.9.*
 python-decouple==3.5
 pytz
+jupyter
