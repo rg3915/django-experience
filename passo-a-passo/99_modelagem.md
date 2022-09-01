@@ -445,6 +445,7 @@ adam.ordereds.all()
 james.ordereds.all()
 ```
 
+Ou seja, pegamos os dados pelo `related_name`.
 
 
 ## OneToOne - Um pra Um
@@ -611,6 +612,14 @@ for user in users:
         profile.save()
 ```
 
+Então no shell ou no notebook experimente
+
+```python
+paul = User.objects.create(username='paul', first_name='Paul')
+paul.profile
+paul.profile.cpf = '987654321'
+paul.profile.save()
+```
 
 
 ## ManyToMany - Muitos pra Muitos
@@ -785,6 +794,14 @@ python manage.py migrate
 ![09_m2m_user_group.png](../img/modelagem/09_m2m_user_group.png)
 
 
+### Jupyter Notebook
+
+TODO
+
+Inserir dados
+
+
+
 ## Abstract Inheritance - Herança Abstrata
 
 ![10_abstract.png](../img/modelagem/10_abstract.png)
@@ -903,6 +920,13 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+### Jupyter Notebook
+
+TODO
+
+Inserir dados
+
+
 
 
 ## Multi-table Inheritance - Herança Multi-tabela
@@ -983,6 +1007,13 @@ class PJAdmin(admin.ModelAdmin):
 python manage.py makemigrations
 python manage.py migrate
 ```
+
+### Jupyter Notebook
+
+TODO
+
+Inserir dados
+
 
 
 ## Proxy Model
@@ -1146,3 +1177,10 @@ class ReceiptAdmin(admin.ModelAdmin):
 python manage.py makemigrations
 python manage.py migrate
 ```
+
+### Jupyter Notebook
+
+TODO
+
+Inserir dados
+
