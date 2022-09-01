@@ -3,7 +3,7 @@ version: "3.8"
 services:
   database:
     container_name: db
-    image: postgres:13.4-alpine
+    image: postgres:14-alpine
     restart: always
     user: postgres  # importante definir o usuário
     volumes:
