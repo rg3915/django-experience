@@ -374,7 +374,77 @@ Username: postgres
 Password: postgres
 ```
 
-AQUI
+### Jupyter Notebook
+
+Para instalar o Jupyter digite
+
+```
+pip install jupyter
+```
+
+E para rodar digite
+
+```
+python manage.py shell_plus --notebook
+```
+
+Quando você tentar rodar
+
+```
+Customer.objects.all()
+```
+
+Você vai ter este erro
+
+```
+SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+```
+
+Então edite o `settings.py`
+
+```python
+import os
+
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+```
+
+Mas o código completo deve ser
+
+```python
+from backend.bookstore.models import Customer, Ordered
+Customer.objects.all()
+
+adam = Customer.objects.create(first_name='Adam', email='adam@email.com')
+james = Customer.objects.create(first_name='James', email='james@email.com')
+
+Customer.objects.all()
+
+Ordered.objects.create(customer=adam)
+Ordered.objects.create(customer=adam)
+Ordered.objects.create(customer=james)
+Ordered.objects.create(customer=james)
+Ordered.objects.create(customer=james)
+
+ordereds = Ordered.objects.all()
+
+for ordered in ordereds:
+    print(ordered)
+    print(ordered.status)
+    print(ordered.get_status_display())
+    print(ordered.customer)
+    print(ordered.customer.email)
+```
+
+Ou seja, a partir da ordem de compra conseguimos ver o cliente.
+
+E como fazemos para a partir do cliente, ver as ordens de compra dele?
+
+```python
+adam.ordereds.all()
+james.ordereds.all()
+```
+
 
 
 ## OneToOne - Um pra Um
