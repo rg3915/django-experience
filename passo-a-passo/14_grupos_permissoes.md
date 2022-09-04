@@ -1,5 +1,7 @@
 # Django Experience #14 - DRF: Grupos e Permissões
 
+![](../img/grupos_permissoes.png)
+
 ## Definindo permissões por linha de comando
 
 Abra o `shell_plus`
