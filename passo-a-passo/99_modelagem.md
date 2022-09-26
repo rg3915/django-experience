@@ -142,6 +142,8 @@ urlpatterns = [
 
 ![01_fk.png](../img/modelagem/01_fk.png)
 
+Ilustração feita com [excalidraw.com](https://excalidraw.com/).
+
 Um **cliente** pode fazer vários **pedidos**, então para reproduzir o esquema acima, usamos o seguinte código:
 
 
