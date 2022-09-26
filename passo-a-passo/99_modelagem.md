@@ -707,6 +707,10 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+![06_m2m_author_book_er.png](../img/modelagem/06_m2m_author_book_er.png)
+
+
+### Exemplo
 
 ![07_m2m_author_book_store.png](../img/modelagem/07_m2m_author_book_store.png)
 
@@ -744,8 +748,13 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+![07_m2m_author_book_store_er.png](../img/modelagem/07_m2m_author_book_store_er.png)
+
+### Exemplo
 
 ![08_m2m_fk.png](../img/modelagem/08_m2m_fk.png)
+
+![08_m2m_fk_er.png](../img/modelagem/08_m2m_fk_er.png)
 
 ```python
 # bookstore/models.py
@@ -791,7 +800,13 @@ python manage.py migrate
 ```
 
 
+
+### Exemplo
+
+
 ![09_m2m_user_group.png](../img/modelagem/09_m2m_user_group.png)
+
+![09_m2m_user_group_er.png](../img/modelagem/09_m2m_user_group_er.png)
 
 
 ### Jupyter Notebook
@@ -805,6 +820,8 @@ Inserir dados
 ## Abstract Inheritance - Herança Abstrata
 
 ![10_abstract.png](../img/modelagem/10_abstract.png)
+
+![10_abstract_er.png](../img/modelagem/10_abstract_er.png)
 
 
 ```python
@@ -933,6 +950,8 @@ Inserir dados
 
 ![12_mti.png](../img/modelagem/12_mti.png)
 
+![12_mti_er.png](../img/modelagem/12_mti_er.png)
+
 ```python
 # persona/models.py
 class Pessoa(models.Model):
@@ -1019,6 +1038,8 @@ Inserir dados
 ## Proxy Model
 
 ![13_proxy_model.png](../img/modelagem/13_proxy_model.png)
+
+![13_proxy_model_er.png](../img/modelagem/13_proxy_model_er.png)
 
 ## Criando app expense
 
