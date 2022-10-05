@@ -817,6 +817,11 @@ TODO
 
 Inserir dados
 
+```
+user.groups.all
+```
+
+
 
 
 ## Abstract Inheritance - Herança Abstrata
@@ -939,13 +944,18 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Jupyter Notebook
+### Django seed
 
-TODO
+```
+python manage.py seed persona --number=5
+```
 
-Inserir dados
+```python
+python manage.py shell_plus
 
-
+Customer.objects.all()
+Seller.objects.all()
+```
 
 
 ## Multi-table Inheritance - Herança Multi-tabela
@@ -1031,10 +1041,18 @@ python manage.py migrate
 
 ### Jupyter Notebook
 
-TODO
+```python
+Pessoa.objects.create(first_name='Agnes', email='agnes@email.com')
 
-Inserir dados
+PF.objects.create(first_name='James', email='james@email.com', cpf='72387711017')
+PJ.objects.create(first_name='Zen', email='zen@email.com', cnpj='98980077000170')
 
+Pessoa.objects.all().count()
+Pessoa.objects.all()
+
+PF.objects.all().values
+PJ.objects.all().values
+```
 
 
 ## Proxy Model
@@ -1203,7 +1221,78 @@ python manage.py migrate
 
 ### Jupyter Notebook
 
-TODO
+```python
+from pprint import pprint
 
-Inserir dados
+Expense.objects.create(description='Fatura', value=1000)
+Receipt.objects.create(description='Pagamento', value=1600)
 
+financials = Financial.objects.all().values()
+
+for financial in financials:
+    pprint(financial)
+
+expenses = Expense.objects.all().values()
+
+for expense in expenses:
+    pprint(expense)
+
+# Extrato
+financials = Financial.objects.all()
+
+for financial in financials.order_by('created'):
+    print(financial.id, financial.created.isoformat()[:10], financial.value, financial.description[:30])
+
+from django.db.models import Sum
+
+saldo = Financial.objects.aggregate(Sum('value'))
+
+saldo
+
+from datetime import date, timedelta
+from random import randint
+from faker import Faker
+
+fake = Faker()
+
+def gen_date_between(start_date='-30d', end_date='30d'):
+    today = date.today()
+    _start_date = int(start_date[:-1])
+    _end_date = int(end_date[:-1])
+    date_start = today + timedelta(days=_start_date)
+    date_end = today + timedelta(days=_end_date)
+    return fake.date_between_dates(date_start=date_start, date_end=date_end)
+
+
+def gen_title():
+    return fake.sentence()
+
+# Criando mais dados fake
+for i in range(60):
+    Financial.objects.create(
+        description=gen_title(),
+        value=randint(-2000,2000),
+        due_date=gen_date_between()
+    )
+
+# Extrato
+financials = Financial.objects.all()
+
+for financial in financials.order_by('due_date'):
+    print(financial.id, financial.due_date.isoformat()[:10], financial.value, financial.description[:30])
+
+from django.db.models.functions import TruncMonth
+
+saldos = Financial.objects \
+    .annotate(month=TruncMonth('due_date')) \
+    .values('month') \
+    .annotate(saldo=Sum('value')) \
+    .order_by('month')
+
+for saldo in saldos:
+    print(saldo['month'].month, saldo['saldo'])
+
+saldo = Financial.objects.aggregate(Sum('value'))
+
+saldo
+```
