@@ -648,7 +648,7 @@ class Author(models.Model):
 
 
 class Book(models.Model):
-    isbn = models.PositiveIntegerField(unique=True)
+    isbn = models.CharField(max_length=13, unique=True)
     title = models.CharField('título', max_length=255)
     rating = models.DecimalField('pontuação', max_digits=5, decimal_places=2, default=5)
     authors = models.ManyToManyField(
@@ -711,6 +711,34 @@ python manage.py migrate
 
 ![06_m2m_author_book_er.png](../img/modelagem/06_m2m_author_book_er.png)
 
+
+### Jupyter Notebook
+
+```python
+# Criando os autores
+daniel = Author.objects.create(first_name='Daniel', last_name='Greenfeld')
+audrey = Author.objects.create(first_name='Audrey', last_name='Greenfeld')
+
+# Criando o livro
+book = Book.objects.create(
+    title='Two Scoops of Django',
+    isbn='9780981467344',
+    price=44.95
+)
+
+# Associando os autores ao livro
+book.authors.add(daniel)
+book.authors.add(audrey)
+
+# Retornando os autores do livro
+book.authors.all()
+
+# Buscando por todos os livros do autor informado
+Book.objects.filter(authors__last_name='Greenfeld').distinct()
+
+# Buscando pelo autor cujo livro se chama 'Two Scoops of Django'
+Author.objects.filter(book__title='Two Scoops of Django')
+```
 
 ### Exemplo
 
@@ -802,6 +830,18 @@ python manage.py migrate
 ```
 
 
+### Jupyter Notebook
+
+```python
+publisher = Publisher.objects.create(name='Feldroy')
+
+book.publisher = publisher
+book.save()
+
+# Conferindo
+book.publisher
+```
+
 
 ### Exemplo
 
@@ -813,15 +853,36 @@ python manage.py migrate
 
 ### Jupyter Notebook
 
-TODO
+```python
+# Cria grupos
+grupos = ['gerente', 'vendedor', 'comprador', 'entregador']
 
-Inserir dados
+[Group.objects.create(name=grupo) for grupo in grupos]
 
+Group.objects.count()
+Group.objects.all()
+
+# Cria usuário
+gerson = User.objects.create(username='gerson', first_name='Gerson')
+
+# Associa usuário a um grupo
+vendedor = Group.objects.get(name='vendedor')
+gerson.groups.add(vendedor)
+
+# Retorna os grupos do usuário
+gerson.groups.all()
+
+# Cria usuário
+jeremias = User.objects.create(username='jeremias', first_name='Jeremias')
+
+# Associa usuário a um grupo
+jeremias.groups.add(vendedor)
+
+# Retorna todos os usuários do grupo 'vendedor'
+User.objects.filter(groups__name='vendedor')
 ```
-user.groups.all
-```
 
-
+TODO: Falar sobre through em outro video.
 
 
 ## Abstract Inheritance - Herança Abstrata

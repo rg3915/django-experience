@@ -109,7 +109,7 @@ class Author(models.Model):
 
 
 class Book(models.Model):
-    isbn = models.PositiveIntegerField(unique=True)
+    isbn = models.CharField(max_length=13, unique=True)
     title = models.CharField('título', max_length=255)
     rating = models.DecimalField('pontuação', max_digits=5, decimal_places=2, default=5)
     authors = models.ManyToManyField(
