@@ -1,6 +1,6 @@
 # Django Experience #23 - ModelChoiceField
 
-<a href="">
+<a href="https://youtu.be/zzspqykDfic">
     <img src="../img/youtube.png">
 </a>
 
