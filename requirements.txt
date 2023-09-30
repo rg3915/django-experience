@@ -12,3 +12,4 @@ ipdb
 psycopg2-binary==2.9.*
 python-decouple==3.5
 pytz
+pydantic>=2.4.0 # not directly required, pinned by Snyk to avoid a vulnerability
