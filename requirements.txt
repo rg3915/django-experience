@@ -12,3 +12,5 @@ ipdb
 psycopg2-binary==2.9.*
 python-decouple==3.5
 pytz
+ipython>=7.16.3 # not directly required, pinned by Snyk to avoid a vulnerability
+pygments>=2.15.0 # not directly required, pinned by Snyk to avoid a vulnerability
