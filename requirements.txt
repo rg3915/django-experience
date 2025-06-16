@@ -2,7 +2,7 @@ autopep8==1.6.0
 django-extensions==3.1.*
 django-filter==21.1
 django-seed==0.3.*
-Django==4.0.*
+Django==4.2.22
 djangorestframework==3.12.*
 djhtml==1.4.11
 djoser==2.1.0
@@ -12,3 +12,4 @@ ipdb
 psycopg2-binary==2.9.*
 python-decouple==3.5
 pytz
+requests>=2.32.4 # not directly required, pinned by Snyk to avoid a vulnerability
