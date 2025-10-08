@@ -12,3 +12,6 @@ router.register(r'hotels', HotelViewSet, basename='hotel')
 urlpatterns = [
     path('api/v1/', include(router.urls)),
 ]
+
+# api/v1/hotels/            GET, POST
+# api/v1/hotels/<int:pk>/   GET, PATCH, PUT, DELETE
