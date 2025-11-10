@@ -2,13 +2,19 @@ autopep8==1.6.0
 django-extensions==3.1.*
 django-filter==21.1
 django-seed==0.3.*
-Django==4.0.*
-djangorestframework==3.12.*
+Django==4.2.26
+djangorestframework==3.15.2
 djhtml==1.4.11
-djoser==2.1.0
+djoser==2.3.0
 dr-scaffold==2.1.*
 drf-yasg==1.20.*
 ipdb
 psycopg2-binary==2.9.*
 python-decouple==3.5
 pytz
+djangorestframework-simplejwt>=5.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+requests>=2.32.4 # not directly required, pinned by Snyk to avoid a vulnerability
+social-auth-app-django>=5.6.0 # not directly required, pinned by Snyk to avoid a vulnerability
+sqlparse>=0.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
