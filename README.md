@@ -2,11 +2,13 @@
 
 Tutorial Django Experience 2022
 
+> Projeto Atualizado em 21/12/25
+
 ## Este projeto foi feito com:
 
-* [Python 3.10.4](https://www.python.org/)
-* [Django 4.0.4](https://www.djangoproject.com/)
-* [Django Rest Framework 3.12.4](https://www.django-rest-framework.org/)
+* [Python 3.14.2](https://www.python.org/)
+* [Django 6.0](https://www.djangoproject.com/)
+* [Django Rest Framework 3.16.1](https://www.django-rest-framework.org/)
 * [Bootstrap 4.0](https://getbootstrap.com/)
 * [htmx 1.6.1](https://htmx.org/)
 
@@ -25,8 +27,14 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python contrib/env_gen.py
+
+docker compose up --build -d
+
 python manage.py migrate
 python manage.py createsuperuser --username="admin" --email=""
+
+# Para gerar dados aleatórios
+python manage.py create_data
 ```
 
 ## Passo a passo
